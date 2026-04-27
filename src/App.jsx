@@ -1,48 +1,41 @@
-import React from 'react'
-import{ BrowserRouter,Routes,Route} from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import { CartProvider } from './context/CartContext'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Shop from './pages/Shop'
-import ProductDetail from './pages/ProductDetail'
-import Cart from './pages/Cart'
-import Checkout from './pages/Checkout'
-import Login from './pages/Login'
-import Profile from './pages/Profile'
-import Footer from './components/Footer'
-import Register from './pages/Register'
-import FAQ from './pages/FAQ'
-import ShippingPolicy from './pages/ShippingPolicy'
-import Returns from './pages/Returns'
-import Contact from './pages/Contact'
-export default function App() {
+import { createContext, useContext, useState } from 'react'
+
+const CartContext = createContext(null)
+
+export function useCart() {
+  return useContext(CartContext)
+}
+
+export function CartProvider({ children }) {
+  const [items, setItems] = useState([])
+
+  function add(product) {
+    setItems((prev) => {
+      const found = prev.find((i) => i.id === product.id)
+      if (found) return prev.map((i) => i.id === product.id ? { ...i, qty: i.qty + 1 } : i)
+      return [...prev, { ...product, qty: 1 }]
+    })
+  }
+
+  function remove(id) {
+    setItems((prev) => prev.filter((i) => i.id !== id))
+  }
+
+  function updateQty(id, qty) {
+    if (qty < 1) { remove(id); return }
+    setItems((prev) => prev.map((i) => i.id === id ? { ...i, qty } : i))
+  }
+
+  function clear() {
+    setItems([])
+  }
+
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0)
+  const count = items.reduce((s, i) => s + i.qty, 0)
+
   return (
-    <BrowserRouter>
-    <AuthProvider>
-      <CartProvider>
-        <div className='min-h-screen flex flex-col'>
-          <Navbar />
-          <main className='flex-1'>
-            <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/shop" element={<Shop/>}/>
-              <Route path="/product/:id" element={<ProductDetail/>}/>
-              <Route path="/cart" element={<Cart/>} />
-              <Route path="/checkout" element={<Checkout/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/profile" element={<Profile/>}/>
-              <Route path="/Register" element={<Register/>}></Route>
-              <Route path="/faq" element={<FAQ/>}/>
-              <Route path="/shipping-policy" element={<ShippingPolicy/>}/>
-              <Route path="/returns" element={<Returns/>}/>
-              <Route path="/contact" element={<Contact/>}/>
-            </Routes>
-          </main>
-          <Footer/>
-        </div>
-      </CartProvider>
-    </AuthProvider>
-    </BrowserRouter>
+    <CartContext.Provider value={{ items, add, remove, updateQty, clear, total, count }}>
+      {children}
+    </CartContext.Provider>
   )
 }
