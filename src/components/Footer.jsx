@@ -6,30 +6,10 @@ export default function Footer() {
   const navigate = useNavigate()
 
   const socialLinks = [
-    {
-      icon: <FiInstagram size={18} />,
-      href: 'https://instagram.com',
-      label: 'Instagram',
-      hoverClass: 'hover:text-pink-400',
-    },
-    {
-      icon: <FiTwitter size={18} />,
-      href: 'https://twitter.com',
-      label: 'Twitter',
-      hoverClass: 'hover:text-sky-400',
-    },
-    {
-      icon: <FiFacebook size={18} />,
-      href: 'https://facebook.com',
-      label: 'Facebook',
-      hoverClass: 'hover:text-blue-500',
-    },
-    {
-      icon: <FiMail size={18} />,
-      href: 'mailto:support@shopnow.com',
-      label: 'Email',
-      hoverClass: 'hover:text-red-400',
-    },
+    { icon: <FiInstagram size={18} />, href: 'https://instagram.com', label: 'Instagram', hoverClass: 'hover:text-pink-400' },
+    { icon: <FiTwitter size={18} />, href: 'https://twitter.com', label: 'Twitter', hoverClass: 'hover:text-sky-400' },
+    { icon: <FiFacebook size={18} />, href: 'https://facebook.com', label: 'Facebook', hoverClass: 'hover:text-blue-500' },
+    { icon: <FiMail size={18} />, href: 'mailto:support@shopnow.com', label: 'Email', hoverClass: 'hover:text-red-400' },
   ]
 
   const shopLinks = [
@@ -40,17 +20,13 @@ export default function Footer() {
   ]
 
   const handleShopLink = (filter) => {
-    if (filter) {
-      navigate(`/shop?filter=${filter}`)
-    } else {
-      navigate('/shop')
-    }
+    navigate(filter ? `/shop?filter=${filter}` : '/shop')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
     <footer className='bg-slate-950 text-gray-300 mt-auto'>
-      <div className='max-w-5xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-8'>
+      <div className='max-w-5xl mx-auto px-4 py-10 sm:py-12 grid grid-cols-2 md:grid-cols-4 gap-8'>
         <div className='col-span-2 md:col-span-1'>
           <p className='text-xl font-bold text-pink-500 mb-3'>ShopNow</p>
           <p className='text-sm text-gray-400 leading-relaxed'>
@@ -89,10 +65,10 @@ export default function Footer() {
         <div>
           <p className='text-sm font-semibold text-white mb-3 uppercase tracking-wide'>Account</p>
           <ul className='space-y-2 text-sm'>
-            <li><Link to='/login' className='hover:text-Emerald-400 transition-colors duration-200'>Sign In</Link></li>
-            <li><Link to='/register' className='hover:text-Emerald-400 transition-colors duration-200'>Register</Link></li>
-            <li><Link to='/profile' className='hover:text-Emerald-400 transition-colors duration-200'>My Profile</Link></li>
-            <li><Link to='/cart' className='hover:text-Emerald-400 transition-colors duration-200'>My Cart</Link></li>
+            <li><Link to='/login' className='hover:text-pink-400 transition-colors duration-200'>Sign In</Link></li>
+            <li><Link to='/register' className='hover:text-pink-400 transition-colors duration-200'>Register</Link></li>
+            <li><Link to='/profile' className='hover:text-pink-400 transition-colors duration-200'>My Profile</Link></li>
+            <li><Link to='/cart' className='hover:text-pink-400 transition-colors duration-200'>My Cart</Link></li>
           </ul>
         </div>
         <div>

@@ -15,9 +15,8 @@ export default function Shop() {
   const [category, setCategory] = useState('')
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
-
   const [searchParams, setSearchParams] = useSearchParams()
-  const activeFilter = searchParams.get('filter') // 'new' | 'best' | 'sale' | null
+  const activeFilter = searchParams.get('filter')
 
   useEffect(() => {
     getCategories().then(setCategories)
@@ -28,6 +27,7 @@ export default function Shop() {
     const promise = category ? getByCategory(category) : getProducts()
     promise.then(setProducts).finally(() => setLoading(false))
   }, [category])
+
   const filteredProducts = useMemo(() => {
     let result = products
     if (search) {
@@ -42,7 +42,6 @@ export default function Shop() {
     } else if (activeFilter === 'sale') {
       result = result.filter((p) => p.price < 30)
     }
-
     return result
   }, [products, search, activeFilter])
 
@@ -63,11 +62,11 @@ export default function Shop() {
   }
 
   return (
-    <div className='max-w-5xl mx-auto px-4 py-10'>
+    <div className='max-w-5xl mx-auto px-4 py-8 sm:py-10'>
       <div className='flex flex-col sm:flex-row gap-3 mb-4'>
         <input
           type='text'
-          placeholder='Search...'
+          placeholder='Search products...'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className='border border-gray-300 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-pink-400'
@@ -75,7 +74,7 @@ export default function Shop() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className='border border-gray-300 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-pink-400'
+          className='border border-gray-300 rounded-lg px-4 py-2 text-sm sm:flex-1 focus:outline-none focus:ring-2 focus:ring-pink-400'
         >
           <option value=''>All Categories</option>
           {categories.map((c) => (
@@ -90,7 +89,7 @@ export default function Shop() {
           <button
             key={label}
             onClick={() => handleFilterTab(key)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
               activeFilter === key
                 ? 'bg-pink-500 text-white shadow'
                 : 'bg-white text-gray-600 border border-gray-200 hover:border-pink-400 hover:text-pink-500'
@@ -100,10 +99,12 @@ export default function Shop() {
           </button>
         ))}
       </div>
+
       {activeFilter && (
         <div className='mb-4 flex items-center gap-2'>
           <span className='text-sm text-gray-500'>
-            Showing: <span className='font-semibold text-pink-500'>{FILTER_LABELS[activeFilter]}</span>
+            Showing:{' '}
+            <span className='font-semibold text-pink-500'>{FILTER_LABELS[activeFilter]}</span>
           </span>
           <button
             onClick={() => handleFilterTab(null)}
@@ -122,7 +123,7 @@ export default function Shop() {
           <p className='text-lg'>No products found.</p>
         </div>
       ) : (
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4'>
           {filteredProducts.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
