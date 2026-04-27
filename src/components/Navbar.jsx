@@ -110,7 +110,7 @@ export default function Navbar() {
               <Link
                 to='/login'
                 onClick={() => setMenuOpen(false)}
-                className='text-sm text-gray-700 hover:text-pink-600 py-1'
+                className='text-sm text-gray-700 hover:text-blue-600 py-1'
               >
                 Login
               </Link>

@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
           <span className='font-bold text-gray-900 text-sm'>${product.price.toFixed(2)}</span>
           <button
             onClick={() => add(product)}
-            className='text-xs bg-pink-600 text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-pink-700 transition-colors'
+            className='text-xs bg-pink-600 text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors'
           >
             Add
           </button>

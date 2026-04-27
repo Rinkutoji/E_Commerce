@@ -46,7 +46,7 @@ export default function ProductDetail() {
           <p className='text-sm text-gray-500 leading-relaxed'>{product.description}</p>
           <button
             onClick={() => add(product)}
-            className='mt-2 bg-pink-600 text-white py-3 rounded-xl hover:bg-pink-700 transition-colors font-medium'
+            className='mt-2 bg-pink-600 text-white py-3 rounded-xl hover:bg-sky-700 transition-colors font-medium'
           >
             Add to Cart
           </button>
