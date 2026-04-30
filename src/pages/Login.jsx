@@ -49,7 +49,7 @@ export default function Login() {
                 value={form[name]}
                 onChange={(e) => setForm({ ...form, [name]: e.target.value })}
                 required
-                className='border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400'
+                className='border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400'
               />
             </div>
           ))}
@@ -57,7 +57,7 @@ export default function Login() {
           <button
             type='submit'
             disabled={loading}
-            className='bg-pink-600 text-white py-2.5 rounded-lg hover:bg-pink-700 font-medium disabled:opacity-50 mt-1'
+            className='bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 mt-1 transition-colors'
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>

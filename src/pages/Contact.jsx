@@ -11,7 +11,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="max-w-5xl mx-auto px-4 pt-24 pb-12 sm:pt-28">
       <h1 className="text-3xl font-bold text-gray-800 mb-2">Contact Us</h1>
       <p className="text-gray-500 mb-10">Have a question? We'd love to hear from you.</p>
       <div className="grid md:grid-cols-2 gap-10">
@@ -31,7 +31,7 @@ export default function Contact() {
                   type="text" required
                   value={form.name}
                   onChange={e => setForm({...form, name: e.target.value})}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
                   placeholder="Your name"
                 />
               </div>
@@ -41,7 +41,7 @@ export default function Contact() {
                   type="email" required
                   value={form.email}
                   onChange={e => setForm({...form, email: e.target.value})}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
                   placeholder="your@email.com"
                 />
               </div>
@@ -51,13 +51,13 @@ export default function Contact() {
                   required rows={5}
                   value={form.message}
                   onChange={e => setForm({...form, message: e.target.value})}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 resize-none"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 resize-none"
                   placeholder="How can we help you?"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-pink-500 text-white py-2 rounded-full hover:bg-pink-600 transition-colors font-medium"
+                className="w-full bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition-colors font-medium"
               >
                 Send Message
               </button>
@@ -85,12 +85,12 @@ export default function Contact() {
             <FiMapPin className="text-pink-500 mt-1" size={18}/>
             <div>
               <p className="font-semibold text-gray-800">Address</p>
-              <p>123 Shop Street, NY 10001</p>
+              <p>168 Shop Street, Phnom Penh</p>
             </div>
           </div>
           <div className="bg-pink-50 border border-pink-100 rounded-xl p-4 mt-4">
             <p className="font-semibold text-gray-800 mb-1">Business Hours</p>
-            <p>Mon – Fri: 9am – 6pm EST</p>
+            <p>Mon – Fri: 9am – 6pm </p>
             <p>Sat – Sun: Closed</p>
           </div>
         </div>

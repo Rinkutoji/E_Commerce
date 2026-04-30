@@ -20,7 +20,7 @@ export default function Cart() {
     )
 
   return (
-    <div className='max-w-2xl mx-auto px-4 py-8 sm:py-10'>
+    <div className='max-w-2xl mx-auto px-4 pt-24 pb-8 sm:pt-28 sm:py-10'>
       <h1 className='text-xl sm:text-2xl font-bold text-gray-800 mb-6 sm:mb-8'>Your Cart</h1>
 
       <div className='space-y-4'>

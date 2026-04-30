@@ -52,7 +52,7 @@ function Checkout() {
   if (!user) return null
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
+    <div className="max-w-3xl mx-auto px-4 pt-24 pb-10 sm:pt-28">
       <h1 className="text-2xl font-bold text-gray-800 mb-8">Checkout</h1>
       <div className="grid md:grid-cols-2 gap-10">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -69,14 +69,14 @@ function Checkout() {
                 value={form[name]}
                 onChange={handleChange}
                 required
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
               />
             </div>
           ))}
           <button
             type="submit"
             disabled={loading}
-            className="bg-pink-600 text-white py-3 rounded-xl hover:bg-pink-700 transition-colors font-medium disabled:opacity-50 mt-2"
+            className="bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 mt-2"
           >
             {loading ? 'Placing...' : 'Place Order'}
           </button>

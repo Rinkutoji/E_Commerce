@@ -62,28 +62,54 @@ export default function Shop() {
   }
 
   return (
-    <div className='max-w-5xl mx-auto px-4 py-8 sm:py-10'>
-      <div className='flex flex-col sm:flex-row gap-3 mb-4'>
-        <input
-          type='text'
-          placeholder='Search products...'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className='border border-gray-300 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-pink-400'
-        />
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className='border border-gray-300 rounded-lg px-4 py-2 text-sm sm:flex-1 focus:outline-none focus:ring-2 focus:ring-pink-400'
-        >
-          <option value=''>All Categories</option>
-          {categories.map((c) => (
-            <option key={c} value={c} className='capitalize'>
-              {c}
-            </option>
-          ))}
-        </select>
+    <div className='max-w-5xl mx-auto px-4 pt-24 pb-8 sm:pt-28 sm:pb-10'>
+
+      {/* Search + Category */}
+      <div className='flex flex-col sm:flex-row gap-3 mb-4 items-stretch'>
+        <div className='relative flex-1 flex items-center'>
+          {/* Search Icon */}
+          <svg
+            className='absolute left-3 text-gray-400 pointer-events-none'
+            width='16' height='16' fill='none' stroke='currentColor'
+            strokeWidth='2' viewBox='0 0 24 24'
+          >
+            <circle cx='11' cy='11' r='8' />
+            <line x1='21' y1='21' x2='16.65' y2='16.65' />
+          </svg>
+          <input
+            type='text'
+            placeholder='Search products...'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className='w-full h-11 border border-gray-300 rounded-lg pl-9 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent'
+          />
+        </div>
+
+        <div className='relative sm:w-52 flex items-center'>
+          {/* Chevron Icon */}
+          <svg
+            className='absolute right-3 text-gray-400 pointer-events-none'
+            width='14' height='14' fill='none' stroke='currentColor'
+            strokeWidth='2' viewBox='0 0 24 24'
+          >
+            <polyline points='6 9 12 15 18 9' />
+          </svg>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className='w-full h-11 border border-gray-300 rounded-lg pl-4 pr-9 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent bg-white'
+          >
+            <option value=''>All Categories</option>
+            {categories.map((c) => (
+              <option key={c} value={c} className='capitalize'>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
+      {/* Filter Tabs */}
       <div className='flex flex-wrap gap-2 mb-6'>
         {filterTabs.map(({ key, label }) => (
           <button
@@ -114,6 +140,7 @@ export default function Shop() {
           </button>
         </div>
       )}
+
       {loading ? (
         <div className='flex justify-center py-10'>
           <div className='w-8 h-8 border-4 border-gray-200 border-t-pink-500 rounded-full animate-spin' />
